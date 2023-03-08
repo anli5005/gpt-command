@@ -4,7 +4,7 @@ import prompts from "npm:prompts@2.4.2";
 import { stderr } from "node:process";
 
 const systemInput = `
-Your goal is to generate terminal commands that performs a given prompt. Output only commands; do not write any explanations. Do not number commands.
+Your goal is to generate terminal commands that performs a given prompt. Output only commands; do not write any explanations or line numbers.
 
 Some information to help you:
 - The computer is running macOS 13.3
