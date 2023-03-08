@@ -4,13 +4,13 @@ import prompts from "npm:prompts@2.4.2";
 import { stderr } from "node:process";
 
 const systemInput = `
-Your goal is to generate terminal commands that performs a given prompt. Output only commands; do not write any explanations. Your output should be able to be run immediately.
+Your goal is to generate terminal commands that performs a given prompt. Output only commands; do not write any explanations. Do not number commands.
 
 Some information to help you:
 - The computer is running macOS 13.3
 - The shell is zsh
 - The preferred editor is nvim
-- Homebrew is installed
+- brew, gh, and ghq are installed
 
 Here is your prompt:
 `.trim();
@@ -39,6 +39,10 @@ if (!input) {
         message: "Please enter your prompt",
         stdout: stderr,
     });
+
+    if (!promptResult.input) {
+        Deno.exit(1);
+    }
 
     input = promptResult.input;
 }
